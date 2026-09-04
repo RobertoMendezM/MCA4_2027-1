@@ -71,6 +71,6 @@ p7.append(p4[0]);
 p7.append(p5[0]);
 p7.append(p6[0]);
 
-p7.save('Grafica_Ec_Sol_EDO_dy=(4-2x)/(3y^2-5).png');
+p7.save("Grafica_Ec_Sol_EDO_dy=(4-2x)\u00f7(3y^2-5).png");
 
 p7.show()
