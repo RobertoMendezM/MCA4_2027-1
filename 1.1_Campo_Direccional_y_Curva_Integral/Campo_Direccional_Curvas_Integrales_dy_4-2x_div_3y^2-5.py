@@ -6,7 +6,9 @@ Campo Direccional de la EDO separable
 
 Curso:  MCA 4 2027-1            
 
-Tema:  Interpretaradecuadamente el campo direccional  e Identidicar 
+Sección Temario: 1.1, 1.3 y 2.3
+
+Tema:  Interpretar adecuadamente el campo direccional  e Identidicar 
        correctamente las curvas solución de la EDO
 
 Referencias:
@@ -19,6 +21,7 @@ Software:
     
 Autor  : Roberto Méndez Méndez    
 Editado: 25 Ago 2026. v2 Actualizado a solve_ivp
+         20 Septiembre 2026
 """
 
 import numpy as np
@@ -48,24 +51,24 @@ dxu = dx/np.sqrt(dx**2 + dy**2)
 # SOLUCIÓN NUMÉRICA
 
 sol1 = solve_ivp(f, (0,4), [1.3], method='BDF')
-sol2 = solve_ivp(f, (0,4), [1.2], method='LSODA')
-sol3 = solve_ivp(f, (-0.8, 4.6), [-2.6], method='LSODA')
-sol4 = solve_ivp(f,(-1.6, -0.09), [1.2])
+sol2 = solve_ivp(f, (0,4), [1.2], method='RK23')
+sol3 = solve_ivp(f,(-1.6, -0.09), [1.2])
+sol4 = solve_ivp(f, (-0.8, 4.6), [-2.6], method='LSODA')
 
 # Gráfica Directional Field
 
-plt.quiver(X,Y,dxu,dyu, color = "orange",  headwidth = 2)
+plt.quiver(X,Y,dxu,dyu, color = "peru",  headwidth = 2)
 
 # Gráficas de Curvas Integrales
 
 plt.plot(sol1.t, sol1.y[0], color='brown')
-plt.plot(sol2.t, sol2.y[0], color='salmon')
-plt.plot(sol3.t, sol3.y[0], color='teal')
-plt.plot(sol4.t, sol4.y[0], color='darkorchid')
+plt.plot(sol2.t, sol2.y[0], color='darkorange')
+plt.plot(sol3.t, sol3.y[0], color='green')
+plt.plot(sol4.t, sol4.y[0], color='darkviolet')
 
 plt.xticks(x, rotation = 60, fontsize=8)
 plt.yticks(y, fontsize=8 )
 plt.title(("Campo direccional y Curvas Integrales \n " 
            "y' = (4 - 2x)/(3y^2 - 5)"), color='blue',
-          fontsize ='large')
+          fontsize ='large', pad= 13)
 plt.show()
