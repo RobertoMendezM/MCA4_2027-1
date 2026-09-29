@@ -6,7 +6,7 @@ Fold / Saddle-Node
                        x(t)' = mu - x(t)^2               
 
 Motivación: Tesis Maestria
-            Prerequsito Fractales              
+            Prerrequisito Fractales              
 
 Tema:  Bifurcaciones Codimension-1
 
@@ -19,13 +19,14 @@ Software:
     Spyder 6.1.6
     
 Autor  : Roberto Méndez Méndez    
-Editado: 1 Septiembre 2026. 
+Creación:  1 Sep 2026
+Editado: 28 Septiembre 2026. 
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Definicónde la Derivadak
+# Definición de la Derivada
 def f(t,x, mu):
     return mu - x**2
 
@@ -39,7 +40,41 @@ T, X = np.meshgrid(t, x)
 
 # Derivative
 dt = np.ones_like(T)
+
+
+##########################
+#
+#  mu < 0
+#
+#########################
+
+# Derivative
 dx = f(T,X, mu = -2)
+
+# Normalización
+N = np.sqrt(dt**2 + dx**2)
+dtu = dt/N
+dxu = dx/N
+
+
+# Gráfica Directional Field
+plt.quiver(T,X,dtu,dxu, color = "orange",  headwidth = 2)
+plt.xticks(t, rotation = 60, fontsize=8)
+plt.yticks(x, fontsize=8 )
+plt.title("Campo Direccional \n x(t)' = mu - x(t)^2    mu = 0", color='blue',
+          fontsize ='large')
+plt.show()
+
+
+
+##########################
+#
+#  mu = 0
+#
+#########################
+
+# Derivative
+dx = f(T,X, mu = 0)
 
 # Normalización
 N = np.sqrt(dt**2 + dx**2)
@@ -50,7 +85,31 @@ dtu = dt/N
 plt.quiver(T,X,dtu,dxu, color = "orange",  headwidth = 2)
 plt.xticks(t, rotation = 60, fontsize=8)
 plt.yticks(x, fontsize=8 )
-plt.title("Campo Direccional \n x(t)' = mu - x(t)^2    mu < 0", color='blue',
+plt.title("Campo Direccional \n x(t)' = mu - x(t)^2    mu 0 0", color='blue',
           fontsize ='large')
 
+plt.show()
+
+
+##########################
+#
+#  mu > 0
+#
+#########################
+
+# Derivative
+dx = f(T,X, mu = 2)
+
+# Normalización
+N = np.sqrt(dt**2 + dx**2)
+dtu = dt/N
+dxu = dx/N
+
+
+# Gráfica Directional Field
+plt.quiver(T,X,dtu,dxu, color = "orange",  headwidth = 2)
+plt.xticks(t, rotation = 60, fontsize=8)
+plt.yticks(x, fontsize=8 )
+plt.title("Campo Direccional \n x(t)' = mu - x(t)^2    mu = 2", color='blue',
+          fontsize ='large')
 plt.show()
